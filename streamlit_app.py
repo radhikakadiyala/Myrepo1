@@ -2,6 +2,7 @@ import streamlit
 import pandas
 import requests
 import snowflake.connector
+from urllib.error import URLError
 
 streamlit.title('bpl test')
 streamlit.header('Breakfast Menu')
@@ -32,6 +33,7 @@ streamlit.dataframe(fruityvice_normalized)
 
 fruit_2choice = streamlit.text_input('What fruit would you like to add?','Kiwi')
 streamlit.write('The user entered ', fruit_2choice)
+streamlit.stop()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
